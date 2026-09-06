@@ -1,0 +1,114 @@
+@font-face {
+  font-family: "Instrument Serif";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/instrument-serif-latin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Instrument Serif";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/instrument-serif-latin-italic.woff2") format("woff2");
+}
+
+:root {
+  color-scheme: dark;
+  --page-bg: #071600;
+  --card-bg: #16240f;
+  --text: #e4ede1;
+  --muted: #9ca299;
+  --accent: #c1bcbc;
+  --accent-hover: #5b5b5b;
+  font-family: "Instrument Serif", Georgia, "Times New Roman", serif;
+  line-height: 1.45;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--page-bg);
+  color: var(--text);
+}
+
+main {
+  width: min(70rem, calc(100% - 2rem));
+  margin: 1rem auto;
+  padding: 1.25rem 2rem 2rem;
+  background: var(--card-bg);
+}
+
+h1,
+h2 {
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+h1 {
+  margin-top: 0;
+}
+
+.lede,
+.note {
+  color: var(--muted);
+}
+
+.profile-image {
+  float: right;
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  margin: 0 0 1rem 1rem;
+  border-radius: 4px;
+}
+
+li + li {
+  margin-top: 0.3rem;
+}
+
+a {
+  color: var(--accent);
+  overflow-wrap: anywhere;
+}
+
+a:hover,
+a:focus-visible {
+  color: var(--accent-hover);
+}
+
+@media (max-width: 44rem) {
+  main {
+    width: min(100% - 1rem, 70rem);
+    margin: 0.5rem auto;
+    padding: 1rem;
+  }
+
+  .profile-image {
+    float: none;
+    display: block;
+    margin: 0 0 1rem;
+  }
+}
+
+@media print {
+  body {
+    background: #fff;
+    color: #111;
+  }
+
+  main {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: #fff;
+  }
+
+  a {
+    color: #831100;
+  }
+}
