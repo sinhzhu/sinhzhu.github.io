@@ -6,8 +6,9 @@
     email.href = "mailto:" + addr;
     email.textContent = addr;
   }
+
+  document.querySelectorAll('a[href^="http"]').forEach((a) => {
+    a.target = "_blank";
+    a.rel = "noopener noreferrer";
+  });
 })();
-document.querySelectorAll('a[href^="http"]').forEach((a) => {
-  a.target = "_blank";
-  a.rel = "noopener noreferrer";
-});
