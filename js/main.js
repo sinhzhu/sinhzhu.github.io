@@ -3,30 +3,24 @@
   if (email) {
     const parts = ["mightytran4", "@", "gmail", ".", "com"];
     const addr = parts.join("");
+    email.href = "mailto:" + addr;
     email.textContent = addr;
-    email.href = "#";
-    email.style.cursor = "pointer";
-    email.addEventListener("click", async (e) => {
-      e.preventDefault();
-      try {
-        await navigator.clipboard.writeText(addr);
-      } catch {
-        const ta = document.createElement("textarea");
-        ta.value = addr;
-        document.body.appendChild(ta);
-        ta.select();
-        document.execCommand("copy");
-        ta.remove();
-      }
-      email.textContent = "Copied!";
-      setTimeout(() => {
-        email.textContent = addr;
-      }, 1500);
-    });
   }
-
-  document.querySelectorAll('a[href^="http"]').forEach((a) => {
-    a.target = "_blank";
-    a.rel = "noopener noreferrer";
-  });
 })();
+document.querySelectorAll('a[href^="http"]').forEach((a) => {
+  a.target = "_blank";
+  a.rel = "noopener noreferrer";
+});
+// Force-muted autoplay for the looping header video.
+// VSCode's preview webview blocks attribute-only autoplay,
+// so set muted via JS and call play() once data is ready.
+const loopVideo = document.querySelector("video.profile-image");
+if (loopVideo) {
+  loopVideo.muted = true;
+  const tryPlay = () => loopVideo.play().catch(() => {});
+  if (loopVideo.readyState >= 2) {
+    tryPlay();
+  } else {
+    loopVideo.addEventListener("canplay", tryPlay, { once: true });
+  }
+}
